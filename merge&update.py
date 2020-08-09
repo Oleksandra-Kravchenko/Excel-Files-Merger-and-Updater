@@ -1,5 +1,5 @@
 """
-This utility merges excel files from a common directory and updates the main workbook by adding data from the merged files into it. It is scheduled to run automatically every Sunday. 
+This utility merges Excel files from a common directory and updates the main workbook by adding data from the merged files into it. It is scheduled to run automatically every Sunday. 
 @author: Oleksandra Kravchenko
 """
 import shutil
@@ -11,7 +11,7 @@ import schedule
 import time
 
 def merge_files():
-    # move file from the "Current Period" directory to the current working directory
+    # move file from the "Current Period" folder to the current working directory
     for file in os.listdir("Current Period/"):
         shutil.move(os.getcwd() + '\\Current Period\\' + file, os.getcwd())
     # create a list of files in the current working directory
@@ -25,7 +25,7 @@ def merge_files():
     df.to_excel(f"period_total_{datetime.date.today()}.xlsx", 
                 sheet_name="Sheet1",
                 index=False)
-    # transfer data frame into the "Processed" directory
+    # transfer data frame into the "Processed" folder
     # delete the files that were merged
     for file in files:
         if file.endswith('.xlsx') and file != 'main.xlsx':
