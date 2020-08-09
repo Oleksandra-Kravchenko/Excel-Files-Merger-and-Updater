@@ -11,9 +11,9 @@ import schedule
 import time
 
 def merge_files():
-    # move file from the "Current Period" folder to the current working directory
-    for file in os.listdir("Current Period/"):
-        shutil.move(os.getcwd() + '\\Current Period\\' + file, os.getcwd())
+    # move file from the "Current" folder to the current working directory
+    for file in os.listdir("Current/"):
+        shutil.move(os.getcwd() + '\\Current\\' + file, os.getcwd())
     # create a list of files in the current working directory
     files = os.listdir(os.getcwd())
     # create a data frame where files will be merged 
@@ -26,11 +26,11 @@ def merge_files():
                 sheet_name="Sheet1",
                 index=False)
     # transfer data frame into the "Processed" folder
-    # delete the files that were merged
+    # delete the files that were merged (optionally: transfer to "Processed" folder)
     for file in files:
         if file.endswith('.xlsx') and file != 'main.xlsx':
-            # os.remove(os.getcwd() + '\\' + file)
-            shutil.move(os.getcwd(), os.getcwd() + '\\Processed')
+            os.remove(os.getcwd() + '\\' + file)
+            # shutil.move(os.getcwd(), os.getcwd() + '\\Processed')
     try: 
         shutil.move(os.getcwd() + '\\' + f"period_total_{datetime.date.today()}.xlsx",
                     os.getcwd() + '\\Processed')
