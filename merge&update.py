@@ -53,8 +53,9 @@ def update_workbook():
     
     print(f"Workbook {wb_name} has been updated!")
 
-schedule the program to update the workbook every Sunday     
+#schedule the program to update the workbook every Sunday     
 schedule.every().sunday.do(update_workbook)
+print('The programme is scheduled to run every Sunday')
 while True:
     schedule.run_pending()
     time.sleep(1)
