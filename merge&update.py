@@ -1,6 +1,6 @@
 """
-This utility merges excel files from a common directory and updates the main workbook by adding data from the merged files into it. It is scheduled to run automatically every Sunday. 
-@author: Oleksandra Kravchenko
+This utility merges excel files from a common directory and updates the main workbook by adding data from the merged files into it.
+It is scheduled to run automatically every Sunday. 
 """
 import shutil
 import os
@@ -53,7 +53,7 @@ def update_workbook():
     
     print(f"Workbook {wb_name} has been updated!")
 
-#schedule the program to update the workbook every Sunday     
+# schedule the program to update the workbook every Sunday     
 schedule.every().sunday.do(update_workbook)
 print('The programme is scheduled to run every Sunday')
 while True:
